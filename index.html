@@ -110,6 +110,24 @@
         gap: 12px;
       }
     }
+   .view-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #2363f0;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(35,99,240,0.25);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.view-btn:hover {
+  background: #174bc0;
+  transform: translateY(-2px);
+}
+
   </style>
 </head>
 <body>
@@ -166,6 +184,7 @@
       <div class="card">
         <span class="card-title">AWS Cloud Lab Simulation</span>
         <p>I provisioned and managed core services such as EC2, S3, and IAM to practice deploying secure and scalable cloud infrastructure. I also configured networking and monitoring tools to ensure high availability, automation, and cost‑efficient operations.</p>
+           <a href="/pdf/aws-lab.pdf" target="_self" class="view-btn">View PDF</a>
       </div>
       <div class="card">
         <span class="card-title">AI Chat Prototype</span>
