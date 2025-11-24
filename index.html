@@ -1,1 +1,189 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Name | Cloud Administrator Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bright color palette, patchwork, soft shadows -->
+  <style>
+    body {
+      background: #f7fafc;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #23272a;
+      margin: 0;
+    }
+    header {
+      background: linear-gradient(90deg, #56CCF2 0%, #FFE082 100%);
+      padding: 32px 0 24px 0;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(86,204,242,0.08);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.6em;
+      color: #2363f0;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.25em;
+      color: #23272a;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    nav a {
+      color: #2363f0;
+      background: #fffdb7;
+      border-radius: 10px;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(255,225,130,0.14);
+      transition: background 0.2s;
+    }
+    nav a:hover {
+      background: #e0f7fa;
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      padding: 24px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(86,204,242,0.10);
+      border-left: 8px solid #56CCF2;
+    }
+    h2 {
+      color: #2363f0;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.9em;
+    }
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: linear-gradient(90deg, #ffffff 85%, #b3eaff 100%);
+      border-radius: 12px;
+      box-shadow: 0 2px 14px rgba(86,204,242,0.10);
+      padding: 18px;
+      transition: box-shadow .2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 22px rgba(86,204,242,0.18);
+    }
+    .card-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #2363f0;
+      margin-bottom: 8px;
+    }
+    .cert-badge {
+      background: #ffe082;
+      color: #23272a;
+      border-radius: 12px;
+      display: inline-block;
+      font-size: 1em;
+      font-weight: 600;
+      padding: 8px 18px;
+      margin: 8px 8px 8px 0;
+      box-shadow: 0 2px 10px rgba(255,225,130,0.14);
+    }
+    .studies-list {
+      list-style-type: disc;
+      padding-left: 24px;
+    }
+    @media (max-width: 600px) {
+      section {
+        padding: 14px;
+      }
+      header h1 {
+        font-size: 2em;
+      }
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Name</h1>
+    <p>Cloud Administrator | AWS | Azure | GCP | On-prem | Kubernetes</p>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#studies">Studies</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
+  <!-- ABOUT ME -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm a passionate Cloud Administrator with extensive experience deploying, managing, and securing cloud infrastructure on AWS, Azure, and GCP. I transition legacy systems to highly-available, cost-effective cloud architectures with a focus on automation, security, and reliability.<br>
+      <em>
+        I love solving challenges, learning new technologies, and collaborating with teams to deliver scalable solutions for modern businesses.
+      </em>
+    </p>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card-list">
+      <div class="card">
+        <span class="card-title">Global Multi-Cloud Migration</span>
+        <p>Migrated legacy banking applications to AWS & Azure with IaC (Terraform), decreasing downtime by 97%.</p>
+      </div>
+      <div class="card">
+        <span class="card-title">Hybrid Kubernetes Platform</span>
+        <p>Deployed and managed Kubernetes clusters across both on-prem and cloud, automating CI/CD and RBAC.</p>
+      </div>
+      <div class="card">
+        <span class="card-title">Cost Optimization Dashboard</span>
+        <p>Built real-time dashboards to monitor and reduce cloud spending, resulting in 22% annual savings to clients.</p>
+      </div>
+      <!-- Add more project cards as needed -->
+    </div>
+  </section>
+
+  <!-- STUDIES SECTION -->
+  <section id="studies">
+    <h2>Studies</h2>
+    <ul class="studies-list">
+      <li>BSc in Computer Science – University of Example</li>
+      <li>Cloud Security Workshop – Coursera, 2024</li>
+      <li>DevOps Bootcamp – Udemy, ongoing</li>
+      <!-- Add more educational/training details as needed -->
+    </ul>
+  </section>
+
+  <!-- CERTIFICATES SECTION -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <span class="cert-badge">AWS Certified Solutions Architect</span>
+    <span class="cert-badge">Microsoft Certified: Azure Administrator</span>
+    <span class="cert-badge">Certified Kubernetes Administrator (CKA)</span>
+    <!-- Add more certificates as needed -->
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Ready to connect? <br>
+      <strong>Email:</strong> your.email@example.com <br>
+      <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" style="color:#2363f0;">linkedin.com/in/yourusername</a>
+    </p>
+  </section>
+</body>
+</html>
