@@ -1,308 +1,622 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Siphelele Mfusi | Cloud Administrator Portfolio</title>
+  <title>Siphelele Mfusi | Junior Developer & Cloud Professional</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bright color palette, patchwork, soft shadows -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0F1B2D;
+      --blue:   #0F4C75;
+      --sky:    #1B98E0;
+      --mint:   #00C9A7;
+      --light:  #F0F4F8;
+      --white:  #FFFFFF;
+      --muted:  #8899A6;
+      --card:   #172335;
+      --border: #1E3050;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      background: #f7fafc;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #23272a;
-      margin: 0;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
     }
-    header {
-      background: linear-gradient(90deg, #56CCF2 0%, #FFE082 100%);
-      padding: 32px 0 24px 0;
-      text-align: center;
-      box-shadow: 0 4px 16px rgba(86,204,242,0.08);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.6em;
-      color: #2363f0;
-      letter-spacing: 2px;
-    }
-    header p {
-      font-size: 1.25em;
-      color: #23272a;
-    }
+
+    /* ── NAV ── */
     nav {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin-top: 20px;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,27,45,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 48px;
     }
-    nav a {
-      color: #2363f0;
-      background: #fffdb7;
-      border-radius: 10px;
-      padding: 8px 16px;
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--mint); letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 48px 60px;
+      max-width: 1100px; margin: 0 auto;
+      position: relative;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,201,167,0.12);
+      border: 1px solid rgba(0,201,167,0.3);
+      color: var(--mint);
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 1px;
+      padding: 6px 14px; border-radius: 20px;
+      margin-bottom: 28px; width: fit-content;
+    }
+    .hero-tag::before { content: "●"; font-size: 0.6rem; }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--sky); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 600px; margin-bottom: 40px; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--sky); color: var(--white);
+      padding: 13px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #1588c8; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: 13px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem;
       text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(255,225,130,0.14);
-      transition: background 0.2s;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
     }
-    nav a:hover {
-      background: #e0f7fa;
+    .btn-outline:hover { border-color: var(--sky); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 60px;
+      padding-top: 40px; border-top: 1px solid var(--border);
     }
-    section {
-      max-width: 900px;
-      margin: 40px auto 0 auto;
-      padding: 24px;
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 32px rgba(86,204,242,0.10);
-      border-left: 8px solid #56CCF2;
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700; color: var(--mint);
     }
-    h2 {
-      color: #2363f0;
-      margin-top: 0;
-      margin-bottom: 18px;
-      font-size: 1.9em;
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      color: var(--mint); font-size: 0.8rem;
+      font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 10px;
     }
-    .card-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; margin-bottom: 40px;
+    }
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: start;
+    }
+    .about-text { color: #B0C0CC; line-height: 1.8; font-size: 0.97rem; }
+    .about-text p { margin-bottom: 16px; }
+    .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+    .highlight-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--mint);
+      border-radius: 8px; padding: 16px 20px;
+    }
+    .highlight-item strong { display: block; color: var(--white); margin-bottom: 4px; font-size: 0.92rem; }
+    .highlight-item span { color: var(--muted); font-size: 0.85rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .skill-tag {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px;
+      font-size: 0.88rem; color: #C5D5E0;
+      display: flex; align-items: center; gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--sky); }
+    .skill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); flex-shrink: 0; }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 24px; }
+    .exp-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 32px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .exp-card:hover { border-color: var(--sky); }
+    .exp-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--sky);
+    }
+    .exp-card.current::before { background: var(--mint); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+    .exp-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; }
+    .exp-date {
+      background: rgba(27,152,224,0.12);
+      border: 1px solid rgba(27,152,224,0.25);
+      color: var(--sky); font-size: 0.8rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .exp-date.active {
+      background: rgba(0,201,167,0.12);
+      border-color: rgba(0,201,167,0.25);
+      color: var(--mint);
+    }
+    .exp-org { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+    .exp-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .exp-bullets li {
+      color: #B0C0CC; font-size: 0.9rem; padding-left: 16px;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: "→"; position: absolute; left: 0;
+      color: var(--sky); font-size: 0.8rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
     }
-    .card {
-      background: linear-gradient(90deg, #ffffff 85%, #b3eaff 100%);
-      border-radius: 12px;
-      box-shadow: 0 2px 14px rgba(86,204,242,0.10);
-      padding: 18px;
-      transition: box-shadow .2s;
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .card:hover {
-      box-shadow: 0 6px 22px rgba(86,204,242,0.18);
+    .project-card:hover { border-color: var(--sky); transform: translateY(-3px); }
+    .project-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(27,152,224,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 16px;
     }
-    .card-title {
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #2363f0;
-      margin-bottom: 8px;
+    .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .project-desc { color: #8899A6; font-size: 0.88rem; line-height: 1.65; flex: 1; margin-bottom: 20px; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--sky); font-size: 0.85rem; font-weight: 600;
+      text-decoration: none;
     }
-    .cert-badge {
-      background: #ffe082;
-      color: #23272a;
-      border-radius: 12px;
-      display: inline-block;
-      font-size: 1em;
-      font-weight: 600;
-      padding: 8px 18px;
-      margin: 8px 8px 8px 0;
-      box-shadow: 0 2px 10px rgba(255,225,130,0.14);
-    }
-    .studies-list {
-      list-style-type: disc;
-      padding-left: 24px;
-    }
-    @media (max-width: 600px) {
-      section {
-        padding: 14px;
-      }
-      header h1 {
-        font-size: 2em;
-      }
-      nav {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
-   .view-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 18px;
-  background: #2363f0;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(35,99,240,0.25);
-  transition: background 0.2s, transform 0.2s;
-}
+    .project-link:hover { color: var(--white); }
 
-.view-btn:hover {
-  background: #174bc0;
-  transform: translateY(-2px);
-}
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px 22px;
+    }
+    .edu-card strong { display: block; font-size: 0.92rem; margin-bottom: 4px; color: var(--white); }
+    .edu-card span { color: var(--muted); font-size: 0.82rem; }
 
+    /* ── CERTS ── */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .cert-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: var(--mint); }
+    .cert-icon { font-size: 1.5rem; }
+    .cert-name { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+    .cert-issuer { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px;
+    }
+    .contact-item-icon { font-size: 1.2rem; }
+    .contact-item-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 2px; }
+    .contact-item-value { font-size: 0.92rem; font-weight: 500; }
+    .contact-item-value a { color: var(--white); text-decoration: none; }
+    .contact-item-value a:hover { color: var(--sky); }
+    .hire-box {
+      background: linear-gradient(135deg, var(--blue) 0%, #0a2a45 100%);
+      border: 1px solid rgba(27,152,224,0.3);
+      border-radius: 16px; padding: 40px 36px;
+      text-align: center;
+    }
+    .hire-box h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; margin-bottom: 12px; }
+    .hire-box p { color: #8899A6; font-size: 0.92rem; margin-bottom: 28px; line-height: 1.6; }
+    .hire-btns { display: flex; flex-direction: column; gap: 10px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 32px;
+      color: var(--muted); font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 20px 40px; }
+      .hero-stats { gap: 24px; }
+      .section { padding: 60px 20px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Siphelele Mfusi</h1>
-    <p>Cloud Administrator | AWS | Azure | Introduction to Packet Trace & Internet of Things</p>
-    <nav>
-      <a href="#about">About Me</a>
-      <a href="#projects">Projects</a>
-      <a href="#studies">Studies</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#Experience">Experience</a>
-      <a href="#contact">Contact</a>
-      <a href="#Hire Me">Hire Me</a>
-    </nav>
-  </header>
 
-  <!-- ABOUT ME -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-     I am a passionate Cloud Administrator with a strong foundation in cloud technologies and IT fundamentals. My journey includes earning the AWS Cloud Practitioner and Azure Fundamentals certifications, which have equipped me with the skills to design, deploy, and manage secure cloud environments. Alongside cloud expertise, I have explored networking through the Introduction to Packet Tracer, gaining practical experience in simulating and configuring network topologies.<br>
-      <em>
-      Beyond cloud and networking, I have expanded my knowledge into emerging technologies and professional skills. Through the Introduction to Internet of Things, I developed an understanding of IoT architectures and data flow from devices to the cloud. I also completed Work Readiness training, strengthening my communication, teamwork, and problem‑solving abilities. Finally, my coding basics with HTML experience allows me to build simple, structured web pages, rounding out my technical skill set with practical development knowledge.
-      </em>
-    </p>
-  </section>
-  <!-- SKILLS SECTION -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
-    <span class="cert-badge" style="background:#b8f0ff;">AWS Cloud</span>
-    <span class="cert-badge" style="background:#ffe082;">Azure Cloud</span>
-    <span class="cert-badge">Microsoft Azure: Virtual Machines, Resource Groups, Storage Accounts</span>
-    <span class="cert-badge">Cloud Concepts: LaaS, SaaS, PaaS, Shared Responsibility Model</span>
-    <span class="cert-badge">Network Simulation: Cisco Packet Tracer</span>
-    <span class="cert-badge">Artificial Intelligence</span>
-    <span class="cert-badge">Internet Of Things (IoT) Basics</span>
-    <span class="cert-badge">Microsoft Office Suit (Work, Excel, Outlook) Time</span>
-    <span class="cert-badge">Team Collaboration</span>
-  </div>
-  <ul>
-    <li>Cloud Infrastructure Deployment</li>
-    <li>Automation</li>
-    <li>Security Management</li>
-    <li>Reliability & Optimization</li>
-    <li>Automation</li>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SM/</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-</section>
+</nav>
 
-  <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card-list">
-      <div class="card">
-        <span class="card-title">AWS Cloud Lab Simulation</span>
-        <p>I provisioned and managed core services such as EC2, S3, and IAM to practice deploying secure and scalable cloud infrastructure. I also configured networking and monitoring tools to ensure high availability, automation, and cost‑efficient operations.</p>
-           <a href="assets/Siphelele_Mfusi_0104275728087_Logbooks (1) (1).pdf" target="_self" class="view-btn">View PDF</a>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Available for opportunities</div>
+  <h1>Siphelele Mfusi<br><span>Junior Developer &amp; Cloud Professional</span></h1>
+  <p class="hero-sub">
+    AWS &amp; Azure certified professional with hands-on experience in WordPress development,
+    eLearning platforms, cloud infrastructure, and OHS digital solutions.
+    Based in Johannesburg, South Africa.
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Get In Touch</a>
+    <a href="#projects" class="btn-outline">View My Work</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Certifications &amp; Credentials</div>
+    </div>
+    <div>
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Technical Projects</div>
+    </div>
+    <div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">Cloud Platforms (AWS &amp; Azure)</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <p class="section-eyebrow">About Me</p>
+  <h2 class="section-title">Building at the intersection of<br>development and the cloud</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am a Junior Developer Intern and Cloud Computing professional based in Johannesburg.
+        My journey has taken me from earning AWS and Azure cloud certifications to building and
+        maintaining production WordPress websites and eLearning platforms for a real engineering
+        consultancy.
+      </p>
+      <p>
+        At Ziyakha Engineering, I've developed internal portals, integrated POPIA-compliant tools,
+        created OHS training content, and presented technology strategies to senior management —
+        all within a professional environment that has sharpened both my technical and communication skills.
+      </p>
+      <p>
+        I am passionate about digital transformation and eager to grow into advanced cloud and
+        development roles where I can deliver real business impact.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item">
+        <strong>🏢 Current Role</strong>
+        <span>Junior Developer Intern · Ziyakha Engineering Pty Ltd, Midrand</span>
       </div>
-      <div class="card">
-        <span class="card-title">AI Chat Prototype</span>
-        <p>Built a basic chatbot using Microsoft Azure Cognitive
-Services, including LUIS, and QnA maker, to demonstrate natural language
-processing and conversational AI capabilities.</p>
-        <a href="/pdf/aws-lab.pdf" target="_self" class="view-btn">View PDF</a>
+      <div class="highlight-item">
+        <strong>☁️ Cloud Certifications</strong>
+        <span>AWS CLF-C02 · Microsoft Azure AZ-900 · CDP(SA)</span>
       </div>
-      <div class="card">
-        <span class="card-title">AZURE Cloud Lab Simulation</span>
-        <p>I deployed and managed virtual machines, storage accounts, and networking resources to practice building secure and scalable cloud environments. I also configured identity and access management with Azure Active Directory and monitored resources to ensure reliability and cost efficiency.</p>
-      <a href="assets/Siphelele_Mfusi_0104275728087_Microsoft Azure Administrator Labs.pdf" target="_self" class="view-btn">View PDF</a>
+      <div class="highlight-item">
+        <strong>📍 Location</strong>
+        <span>Kenilworth, Johannesburg, South Africa</span>
       </div>
-      <!-- Add more project cards as needed -->
-    </div>
-  </section>
-
-  <!-- STUDIES SECTION -->
-  <section id="studies">
-    <h2>Studies</h2>
-    <ul class="studies-list">
-      <li>Certified Digital Practitioner – CDP(SA)</li>
-      <li>Cloud Administrator - Afrika Tikkun Services</li>
-      <li>Grade 12 - Umzilikazi Secondary School</li>
-      <!-- Add more educational/training details as needed -->
-    </ul>
-  </section>
-
-  <!-- CERTIFICATES SECTION -->
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <span class="cert-badge">AWS Certified Cloud Practitioner</span>
-    <span class="cert-badge">Microsoft Certified: Azure Fundamentals</span>
-    <span class="cert-badge">AWS Academy Graduate - AWS Academy Cloud Foundations</span>
-    <span class="cert-badge">Artificial Intelligence Fundamentals</span>
-    <span class="cert-badge">Introduction to Packet Tracer</span>
-    <span class="cert-badge">Introduction to Internet of Things</span>
-    <span class="cert-badge">Work Readiness</span>
-   <!-- Add more certificates as needed -->
-  </section>
-<!-- Experience Section -->
-<section id="experience" style="padding: 3rem 1.5rem; background: #f9f9f9; color: #333;">
-  <h2 style="text-align: left; margin-bottom: 2rem;">Experience</h2>
-  
-  <div style="max-width: 800px; margin: 0 auto;">
-    <div style="margin-bottom: 1.5rem;">
-      <h3 style="margin: 0; color: #0078d7;">Afrika Tikkun Services</h3>
-      <p style="margin: 0.25rem 0; font-style: italic;">Cloud Administrator Trainee</p>
-      <p>
-       Participate in Hands-On Labs and Training.
-       Document Procedures and Configurations.
-       Support Security and Access Controls.
-       Assist in Cloud Resource Setup.
-      </p>
-    </div>
-
-    <div style="margin-bottom: 1.5rem;">
-      <h3 style="margin: 0; color: #0078d7;">Umzilikazi Seniour Secondary School</h3>
-      <p style="margin: 0.25rem 0; font-style: italic;">Assistant Teacher</p>
-      <p>
-        Work with students to make sure they understand.
-        Help teachers prepare lesson materials.
-        Prepare materials.
-        Tidy the classroom.
-      </p>
-    </div>
-
-    <div style="margin-bottom: 1.5rem;">
-      <h3 style="margin: 0; color: #0078d7;">Work Readiness Program</h3>
-      <p style="margin: 0.25rem 0; font-style: italic;">Professional Development</p>
-      <p>
-        Gained skills in communication, teamwork, and problem-solving to prepare for workplace success.
-      </p>
-    </div>
-
-    <div style="margin-bottom: 1.5rem;">
-      <h3 style="margin: 0; color: #0078d7;">Coding Basics – HTML</h3>
-      <p style="margin: 0.25rem 0; font-style: italic;">Web Development</p>
-      <p>
-        Built simple, semantic web pages and portfolio components using HTML.
-      </p>
+      <div class="highlight-item">
+        <strong>🎯 Open To</strong>
+        <span>Cloud, Developer &amp; IT roles — full-time or internship</span>
+      </div>
     </div>
   </div>
 </section>
 
+<hr class="divider">
 
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      Ready to connect? <br>
-      <strong>Phone Number:</strong>0603325170 <br>
-      <strong>Email:</strong> lindasphelele1@gmail.com <br>
-      <strong>LinkedIn:</strong> <a href="https://https://www.linkedin.com/in/siphelele-mfusi-590502220/" style="color:#2363f0;">www.linkedin.com/in/siphelele-mfusi-590502220</a>
-    </p>
-  </section>
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <p class="section-eyebrow">Skills</p>
+  <h2 class="section-title">Core Competencies</h2>
+  <div class="skills-grid">
+    <div class="skill-tag"><span class="skill-dot"></span>WordPress (PHP, HTML, CSS, JS)</div>
+    <div class="skill-tag"><span class="skill-dot"></span>AWS (CLF-C02 Certified)</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Microsoft Azure (AZ-900 Certified)</div>
+    <div class="skill-tag"><span class="skill-dot"></span>MasterStudy LMS Administration</div>
+    <div class="skill-tag"><span class="skill-dot"></span>PHP &amp; SQLite Backend</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Cloud: IaaS, SaaS, PaaS</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Network Simulation (Cisco)</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Git &amp; Version Control</div>
+    <div class="skill-tag"><span class="skill-dot"></span>eLearning Content Development</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Artificial Intelligence Fundamentals</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Internet of Things (IoT) Basics</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Microsoft Office Suite</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Digital Content Creation</div>
+    <div class="skill-tag"><span class="skill-dot"></span>Team Collaboration</div>
+    <div class="skill-tag"><span class="skill-dot"></span>POPIA Compliance Tools</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <p class="section-eyebrow">Experience</p>
+  <h2 class="section-title">Professional Background</h2>
+  <div class="exp-list">
+
+    <div class="exp-card current">
+      <div class="exp-header">
+        <div class="exp-title">Junior Developer Intern</div>
+        <div class="exp-date active">Dec 2025 – Jun 2026</div>
+      </div>
+      <div class="exp-org">Ziyakha Engineering Pty Ltd · Midrand, Johannesburg</div>
+      <ul class="exp-bullets">
+        <li>Built and maintained the company WordPress website using PHP, HTML, CSS, and JavaScript</li>
+        <li>Managed MasterStudy LMS eLearning platform with HWSETA/QCTO-aligned OHS course content</li>
+        <li>Developed an internal staff document management portal using PHP and SQLite</li>
+        <li>Integrated a WordPress live chatbox with email escalation and POPIA consent gate plugin</li>
+        <li>Developed a full BEFAR eLearning course including quizzes, session PDFs, and platform improvements</li>
+        <li>Researched and presented a VR training strategy to senior management (WP VR Plugin → Unity 3D)</li>
+        <li>Performed video format conversions (TS to MP4 via FFmpeg) and produced digital training content</li>
+        <li>Created professional business presentations on micro-leadership and core business functions</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Cloud Administrator Trainee</div>
+        <div class="exp-date">May 2025 – Oct 2025</div>
+      </div>
+      <div class="exp-org">Digital Youth ICT Academy (Afrika Tikkun Services)</div>
+      <ul class="exp-bullets">
+        <li>Completed AWS and Azure cloud labs covering virtual machines, storage, networking, and security</li>
+        <li>Deployed Azure VMs, configured resource groups, and monitored usage metrics via Azure Monitor</li>
+        <li>Built an AI chatbot prototype using Azure Cognitive Services (LUIS and QnA Maker)</li>
+        <li>Designed and simulated LAN/WAN network topologies using Cisco Packet Tracer</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Assistant Teacher</div>
+        <div class="exp-date">Voluntary</div>
+      </div>
+      <div class="exp-org">Umzilikazi Senior Secondary School</div>
+      <ul class="exp-bullets">
+        <li>Supported students with understanding of subject material</li>
+        <li>Assisted teachers with preparation of lesson materials</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-title">General Worker</div>
+        <div class="exp-date">Mar 2021 – Aug 2021</div>
+      </div>
+      <div class="exp-org">Oscarman Mechanic and Engineering</div>
+      <ul class="exp-bullets">
+        <li>Supported daily workshop operations with reliability, attention to detail, and teamwork</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <p class="section-eyebrow">Projects</p>
+  <h2 class="section-title">Technical Work</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-icon">🌐</div>
+      <div class="project-title">Ziyakha Engineering WordPress Website</div>
+      <p class="project-desc">Built a full custom WordPress website from scratch using PHP, HTML, CSS, and JS with single-page scroll layout, live chatbox with email escalation, and POPIA compliance gate.</p>
+      <a href="https://ziyakhaengineering.co.za" target="_blank" class="project-link">View Live Site →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📚</div>
+      <div class="project-title">OHS eLearning Platform (MasterStudy LMS)</div>
+      <p class="project-desc">Set up and populated a full eLearning platform with 5 OHS courses (Fire Safety, BEFAR, National OHS Officer, and more) aligned to HWSETA/QCTO curriculum.</p>
+      <a href="https://elearning.ziyakhaengineering.co.za" target="_blank" class="project-link">View Platform →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🗄️</div>
+      <div class="project-title">Staff Document Management Portal</div>
+      <p class="project-desc">Developed a PHP/SQLite-based internal portal for document management, accessible to staff via the company intranet. Supports uploads, retrieval, and access control.</p>
+      <span class="project-link" style="color: var(--muted); cursor: default;">Internal System</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">☁️</div>
+      <div class="project-title">AWS Cloud Lab Simulation</div>
+      <p class="project-desc">Provisioned and managed EC2, S3, and IAM services. Configured networking and monitoring tools for high availability, automation, and cost-efficient operations.</p>
+      <a href="assets/Siphelele_Mfusi_0104275728087_Logbooks.pdf" target="_self" class="project-link">View Logbook →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔵</div>
+      <div class="project-title">Azure Cloud Lab Simulation</div>
+      <p class="project-desc">Deployed and managed VMs, storage accounts, and networking resources. Configured Azure Active Directory and monitored resources for reliability and cost efficiency.</p>
+      <a href="assets/Siphelele_Mfusi_0104275728087_Microsoft Azure Administrator Labs.pdf" target="_self" class="project-link">View Logbook →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🤖</div>
+      <div class="project-title">AI Chatbot Prototype</div>
+      <p class="project-desc">Built a conversational AI chatbot using Azure Cognitive Services (LUIS and QnA Maker) to demonstrate natural language processing and conversational AI capabilities.</p>
+      <span class="project-link" style="color: var(--muted); cursor: default;">Prototype</span>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <p class="section-eyebrow">Education</p>
+  <h2 class="section-title">Academic Background</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <strong>Certified Digital Practitioner – CDP(SA)</strong>
+      <span>Digital Youth ICT Academy · 2025</span>
+    </div>
+    <div class="edu-card">
+      <strong>Cloud Administrator Programme</strong>
+      <span>Afrika Tikkun Services · 2025</span>
+    </div>
+    <div class="edu-card">
+      <strong>Grade 12 – National Senior Certificate</strong>
+      <span>Umzilikazi Senior Secondary School · Nov 2019</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICATES -->
+<section class="section" id="certificates">
+  <p class="section-eyebrow">Credentials</p>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">AWS Certified Cloud Practitioner (CLF-C02)</div><div class="cert-issuer">Digital Youth ICT Academy · Jul 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Microsoft Azure Fundamentals (AZ-900)</div><div class="cert-issuer">Digital Youth ICT Academy · Oct 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🎓</div><div><div class="cert-name">AWS Academy Graduate – Cloud Foundations</div><div class="cert-issuer">Digital Youth ICT Academy · Jul 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🤖</div><div><div class="cert-name">AI Fundamentals (IBM)</div><div class="cert-issuer">Digital Youth ICT Academy · Jun 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">✅</div><div><div class="cert-name">Work Readiness Certificate</div><div class="cert-issuer">Digital Youth ICT Academy · Oct 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">💬</div><div><div class="cert-name">English for IT1 – Technical Communication</div><div class="cert-issuer">Digital Youth ICT Academy · Oct 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">💬</div><div><div class="cert-name">English for IT2 – Advanced IT Terminology</div><div class="cert-issuer">Digital Youth ICT Academy · Oct 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🌐</div><div><div class="cert-name">Introduction to Internet of Things</div><div class="cert-issuer">Durban University of Technology · Sep 2020</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🔌</div><div><div class="cert-name">Introduction to Packet Tracer</div><div class="cert-issuer">Durban University of Technology · Nov 2020</div></div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <p class="section-eyebrow">Contact</p>
+  <h2 class="section-title">Let's Connect</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div>
+          <div class="contact-item-label">Phone</div>
+          <div class="contact-item-value"><a href="tel:0603325170">0603325170</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value"><a href="mailto:lindasphelele1@gmail.com">lindasphelele1@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">💼</div>
+        <div>
+          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-value"><a href="https://www.linkedin.com/in/siphelele-mfusi-590502220/" target="_blank">siphelele-mfusi</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Location</div>
+          <div class="contact-item-value">Kenilworth, Johannesburg, ZA</div>
+        </div>
+      </div>
+    </div>
+    <div class="hire-box">
+      <h3>Open to Opportunities</h3>
+      <p>Looking for a cloud-certified junior developer who can hit the ground running? I bring both technical skills and real project experience to any team.</p>
+      <div class="hire-btns">
+        <a href="mailto:lindasphelele1@gmail.com" class="btn-primary">📧 Email Me</a>
+        <a href="assets/Siphelele_Mfusi_CV.pdf" download class="btn-outline">⬇ Download CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Siphelele Mfusi · Johannesburg, South Africa · Built with purpose.</p>
+</footer>
+
 </body>
 </html>
-<!-- Hire Me Section -->
-<section id="hire-me" style="padding: 3rem 1.5rem; background: #0d1117; color: #c9d1d9; text-align: center;">
-  <h2 style="margin-bottom: 0.75rem; color: #ffffff;">Hire Me</h2>
-  <p style="max-width: 720px; margin: 0 auto 1.25rem;">
-    Cloud Administrator with expertise in AWS, Azure, and GCP. I specialize in building secure, automated, and highly available cloud architectures.
-  </p>
-  <div style="display: inline-flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
-    <a href="mailto:lindasphelele1@gmail.com"
-       style="padding: 0.75rem 1.25rem; background: #238636; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600;">
-       Contact Me
-    </a>
-    <a href="https://github.com/yourgithubusername" target="_blank" rel="noopener"
-       style="padding: 0.75rem 1.25rem; background: #21262d; color: #ffffff; text-decoration: none; border: 1px solid #30363d; border-radius: 6px; font-weight: 600;">
-       View GitHub
-    </a>
-    <a href="/assets/resume.pdf" download="Siphelele-Mfusi-Resume.pdf"
-   onclick="alert('Downloading Resume...')"
-   style="padding: 0.75rem 1.25rem; background: transparent; color: #58a6ff; text-decoration: none; border: 1px solid #58a6ff; border-radius: 6px; font-weight: 600;">
-   Download Résumé
-</a>
-  </div>
-</section>
